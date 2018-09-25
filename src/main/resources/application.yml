@@ -1,6 +1,8 @@
 server:
   port: 80
 
+
+
 # DataSource Config
 spring:
   datasource:
@@ -8,8 +10,20 @@ spring:
     url: jdbc:mysql://192.168.3.122:3306/hg?useUnicode=true&characterEncoding=utf8
     username: root
     password: root
+  application:
+    name: user-manager-service
 
 # Logger Config
 logging:
   level:
     com.baomidou.mybatisplus.samples.quickstart: debug
+
+#eureka-client
+eureka:
+  client:
+     serviceUrl:
+       defaultZone: http://localhost:8701/eureka/
+  instance:
+    hostname: localhost
+      
+ 
