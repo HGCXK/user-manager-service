@@ -59,13 +59,22 @@
 			<artifactId>spring-cloud-starter-eureka</artifactId>
 			<version>1.4.5.RELEASE</version>
 		</dependency>
+
+
+
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-data-redis</artifactId>
+		</dependency>
 		<dependency>
 			<groupId>org.springframework.session</groupId>
 			<artifactId>spring-session</artifactId>
 		</dependency>
-
-
-		
+		<dependency>
+			<groupId>org.springframework.cloud</groupId>
+			<artifactId>spring-cloud-starter-netflix-zuul</artifactId>
+			<version>1.4.5.RELEASE</version>
+		</dependency>
 	</dependencies>
 
 	<build>
