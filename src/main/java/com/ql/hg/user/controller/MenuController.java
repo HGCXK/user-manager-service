@@ -43,11 +43,6 @@ public class MenuController {
 		return  menuService.save(menu)+"";
 	}
 	
-	
-	@RequestMapping("/menuadd")
-	public String menuadd(){
-		return "/addMenu.html";
-	}
 
 
 }

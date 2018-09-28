@@ -1,5 +1,14 @@
 package com.ql.hg.common.filter;
 
+import java.io.IOException;
+
+import javax.servlet.Filter;
+import javax.servlet.FilterChain;
+import javax.servlet.FilterConfig;
+import javax.servlet.ServletException;
+import javax.servlet.ServletRequest;
+import javax.servlet.ServletResponse;
+import javax.servlet.annotation.WebFilter;
 import javax.servlet.http.HttpServletRequest;
 import com.netflix.zuul.ZuulFilter;
 import com.netflix.zuul.context.RequestContext;
@@ -10,32 +19,29 @@ import com.netflix.zuul.exception.ZuulException;
  * @author HG
  *
  */
-
-public class UserAuthorityFilter extends ZuulFilter{
-
-	@Override
-	public Object run() throws ZuulException {
-		RequestContext context = RequestContext.getCurrentContext();
-		HttpServletRequest request = context.getRequest();
-		String url = request.getRequestURI().toString();
-		System.out.println("......"+url);
-		return null;
-	}
+@WebFilter(urlPatterns = "/*")
+public class UserAuthorityFilter implements Filter{
 
 	@Override
-	public boolean shouldFilter() {
+	public void destroy() {
+		// TODO Auto-generated method stub
 		
-		return true;
 	}
 
 	@Override
-	public int filterOrder() {
-		return 1;
+	public void doFilter(ServletRequest arg0, ServletResponse arg1, FilterChain arg2)
+			throws IOException, ServletException {
+		
+		
+		
 	}
 
 	@Override
-	public String filterType() {
-		return "pre";
+	public void init(FilterConfig arg0) throws ServletException {
+		// TODO Auto-generated method stub
+		
 	}
 
+	
+	
 }
