@@ -29,6 +29,13 @@ public class MenuController {
 	private MenuService menuService;
 	
 	
+	
+	@RequestMapping("/index")
+	public String list(){
+		return "/user/menuindex.html";
+	}
+	
+	
 	@RequestMapping("/list")
 	@ResponseBody
 	public List<Menu>list(ModelMap modelMap){

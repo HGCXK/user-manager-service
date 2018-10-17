@@ -12,7 +12,6 @@ import com.ql.hg.common.filter.UserAuthorityFilter;
 @SpringBootApplication
 @EnableDiscoveryClient
 @EnableRedisHttpSession
-@EnableZuulProxy
 public class UserManagerApplication {
 
 	public static void main(String[] args) {
@@ -24,7 +23,7 @@ public class UserManagerApplication {
 	 * 配置用户权限过滤器
 	 * @return
 	 */
-	@Bean  
+	/*@Bean  */
 	public  UserAuthorityFilter userAuthorityFilter(){
 		return new UserAuthorityFilter();
 	}
