@@ -32,7 +32,7 @@ public class MenuController {
 	
 	@RequestMapping("/index")
 	public String list(){
-		return "/user/menuindex.html";
+		return "/user/menu/menuindex.html";
 	}
 	
 	

@@ -7,6 +7,10 @@ import lombok.Data;
 import lombok.experimental.Accessors;
 
 import java.io.Serializable;
+import java.net.URL;
+import java.util.List;
+
+import org.springframework.boot.autoconfigure.jmx.ParentAwareNamingStrategy;
 
 /**
  * <p>
@@ -60,6 +64,9 @@ public class Menu extends Model<Menu> {
      * 访问地址
      */
     private String url;
+    
+
+    
 
 	@Override
 	protected Serializable pkVal() {
