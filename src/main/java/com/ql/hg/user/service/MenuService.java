@@ -8,6 +8,7 @@ import java.util.Map;
 import org.springframework.ui.ModelMap;
 
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
+import com.baomidou.mybatisplus.core.injector.methods.Delete;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.baomidou.mybatisplus.extension.service.IService;
 
@@ -26,5 +27,9 @@ public interface MenuService  {
 	int saveList(List<Menu> menus);
 	
 	int save(Menu menu);
+	
+	int delete(Menu menu);
+	
+	int update(Menu menu);
 
 }

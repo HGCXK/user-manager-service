@@ -8,6 +8,7 @@ import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
+import com.baomidou.mybatisplus.core.injector.methods.Update;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.ql.hg.user.entity.Menu;
 import com.ql.hg.user.service.MenuService;
@@ -49,6 +50,20 @@ public class MenuController {
 	public String add(ModelMap map,Menu menu){
 		return  menuService.save(menu)+"";
 	}
+	
+	@RequestMapping("/update")
+	@ResponseBody
+	public String update(Menu menu){
+		return menuService.update(menu)+"";
+	}
+	
+	
+	@RequestMapping("/delete")
+	@ResponseBody
+	public String delete(Menu menu){
+		return menuService.delete(menu)+"";
+	}
+	
 	
 
 

@@ -7,25 +7,88 @@
 	<link rel="stylesheet" type="text/css" href="../../common/themes/icon.css">
 	<script type="text/javascript" src="../../common/jquery.min.js"></script>
 	<script type="text/javascript" src="../../common/jquery.easyui.min.js"></script>
-	<script type="text/javascript" src="js/menuindex.js"></script>
+	<script type="text/javascript">
+		/**
+		 * 新增页面的html
+		 * @returns
+		 */
+		function newMenu(){
+			 $('#editDlg').dialog('open').dialog('setTitle','创建菜单');
+			    $('#fm').form('clear');
+			    url = '/menu/add';
+		}
+		
+		function editMenu(){
+			var row = $('#menuTable').datagrid('getSelected');
+			alert(row.id);
+			$('#editDlg').dialog('open').dialog('setTitle','更新菜单');
+			$('#fm').form('load',row);
+			url="/menu/update";
+		}
+		
+		function destroyMenu(){
+			var row = $('#menuTable').datagrid('getSelected');
+			if(row){ //如果选中一行
+				$.messager.confirm('confirm','确认删除此条数据？',function(r){
+					if(r){
+						$.post('/menu/delete',{id:row.id},function(result){
+							if(result.success){
+								$('#menuTable').datagrid('reload');
+							}
+							else {
+								$.messager.show({
+									title:'Error',
+									msg:result.errMsg
+								});
+							}
+						});
+					}
+				},'json');
+			}
+		}
+		
+		
+		function saveMenu(){
+			$('#fm').form('submit',
+			{
+				url:url,
+				onSubmit:function(){
+					return $(this).form('validate');
+				},
+				success:function(result){
+					var result = eval('('+result+')');
+					if(result.errorMsg){
+						$.message.show({
+							title:'Error',
+							msg:result.errorMsg
+						});
+					}
+					else {
+						$('#editDlg').dialog('close');
+						$('#menuTable').datagrid('reload');
+					}
+				}
+			})
+		}
+
+	</script>
 </head>
 <body>
 	<h2>菜单管理</h2>
 	<div style="margin:20px 0;"></div>
 	<div class="easyui-layout" style="width:100%;height:500px;">
 		<div data-options="region:'north'" style="height:50px"></div>
-		<div data-options="region:'south',split:true" style="height:50px;"></div>
 		<div data-options="region:'west',split:true" title="East" style="width:20%;">
 			<ul class="easyui-tree" data-options="url:'',method:'get',animate:true,dnd:true"></ul> <!-- 修改请求路径 -->
 		</div>
 		
 		<div data-options="region:'center',title:'Main Title',iconCls:'icon-ok'">
-					<table class="easyui-datagrid"
+					<table class="easyui-datagrid" id = "menuTable"
 						toolbar="#toolbar"
 							data-options="url:'/menu/list',method:'post',singleSelect:true,fit:true,fitColumns:true">
 						<thead>
 							<tr>
-								<th data-options="field:'id'" disabled = "diseable">级别</th>
+								<!-- <th data-options="field:'id'" disabled = "diseable">级别</th> -->
 								<th data-options="field:'level',align:'center'" width="10%">级别</th>
 								<th data-options="field:'name',align:'center'" width="20%">名称</th>
 								<th data-options="field:'flag',align:'center'" width="10%">标识</th>
@@ -40,11 +103,35 @@
 					    <a href="#" class="easyui-linkbutton" iconCls="icon-edit" plain="true" onclick="editMenu()">编辑用户</a>
     					<a href="#" class="easyui-linkbutton" iconCls="icon-remove" plain="true" onclick="destroyMenu()">删除用户</a>
 					</div>	
+					
+					<!-- 编辑的对话框 -->
+					<div id="editDlg" class="easyui-dialog" style="width:400px;height:280px;padding:10px 20px"
+			        closed="true" buttons="#editDlg-buttons">
+					    <form id="fm" method="post">
+					    	 <input name="id" type="hidden"/>	
+					        <div class="fitem">
+					            <label>名称:</label>
+					            <input name="name" class="easyui-validatebox" required="true">
+					        </div>
+					        <div class="fitem">
+					            <label>排序:</label>
+					            <input name="sort" class="easyui-validatebox" required="true">
+					        </div>
+					        <div class="fitem">
+					            <label>等级:</label>
+					            <input name="level" class="easyui-validatebox" required="true">
+					        </div>
+					        <div class="fitem">
+					            <label>url:</label>
+					            <input name="url">
+					        </div>
+					    </form>
+					</div>
+					<div id="editDlg-buttons">
+					    <a href="#" class="easyui-linkbutton" iconCls="icon-ok" onclick="saveMenu()">Save</a>
+					    <a href="#" class="easyui-linkbutton" iconCls="icon-cancel" onclick="javascript:$('#editDlg').dialog('close')">Cancel</a>
+					</div>
 		</div>
-		<!-- #include file = "menuadd.html" -->
-		
-		
-		
 	</div>
 </body>
 </html>

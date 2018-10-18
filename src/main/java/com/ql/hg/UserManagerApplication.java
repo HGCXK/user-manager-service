@@ -6,7 +6,7 @@ import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
 import org.springframework.session.data.redis.config.annotation.web.http.EnableRedisHttpSession;
 
 @SpringBootApplication
-@EnableDiscoveryClient
+/*@EnableDiscoveryClient*/
 @EnableRedisHttpSession
 public class UserManagerApplication {
 
