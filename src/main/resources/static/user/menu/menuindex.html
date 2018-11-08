@@ -32,13 +32,16 @@
 				$.messager.confirm('confirm','确认删除此条数据？',function(r){
 					if(r){
 						$.post('/menu/delete',{id:row.id},function(result){
+							result = JSON.parse(result);
+							alert(result.success);
+							//alert(result);
 							if(result.success){
 								$('#menuTable').datagrid('reload');
 							}
 							else {
 								$.messager.show({
 									title:'Error',
-									msg:result.errMsg
+									msg:"删除失败"
 								});
 							}
 						});

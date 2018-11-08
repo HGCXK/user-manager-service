@@ -1,7 +1,10 @@
 package com.ql.hg.user.controller;
 
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
@@ -10,9 +13,13 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.core.injector.methods.Update;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
+import com.google.gson.JsonObject;
 import com.ql.hg.user.entity.Menu;
 import com.ql.hg.user.service.MenuService;
+import com.ql.hg.utils.JsonResultUtils;
 import com.ql.hg.utils.PageUtils;
+
+import net.minidev.json.JSONUtil;
 
 /**
  * <p>
@@ -61,7 +68,9 @@ public class MenuController {
 	@RequestMapping("/delete")
 	@ResponseBody
 	public String delete(Menu menu){
-		return menuService.delete(menu)+"";
+		Map<String, String> result = new HashMap<>();
+		result.put("success", menuService.delete(menu)+"");
+		return JsonResultUtils.mapToJsonString(result);
 	}
 	
 	

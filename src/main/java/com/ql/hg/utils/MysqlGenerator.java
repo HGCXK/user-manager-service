@@ -15,10 +15,11 @@ public class MysqlGenerator {
 
     private static String packageName="user";    //文件路径
     private static String authorName="HG";     //作者
-    private static String[] table = {"tbl_sys_role","tbl_sys_menu"};             //table名字
+    private static String[] table = {"tbl_sys_role"};             //table名字
     private static String prefix="tbl_sys_";                     //table前缀
     private static File file = new File("");
     private static String path = file.getAbsolutePath();
+    private static String dbURL  = "jdbc:mysql://localhost:3306/hg?characterEncoding=utf8";
 
 
     public static void main(String[] args) {
@@ -51,7 +52,7 @@ public class MysqlGenerator {
                         .setDriverName("com.mysql.jdbc.Driver")
                         .setUsername("root")
                         .setPassword("root")
-                        .setUrl("jdbc:mysql://192.168.3.122:3306/hg?characterEncoding=utf8")
+                        .setUrl(dbURL)
         ).setStrategy(
                 // 策略配置
                 new StrategyConfig()
