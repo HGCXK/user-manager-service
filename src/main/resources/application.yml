@@ -1,7 +1,9 @@
 server:
   port: 80
 
-
+#application 启动时加载数据
+application:
+   init:redis
 
 # DataSource Config
 spring:
@@ -34,11 +36,5 @@ logging:
   level:
     com.ql.hg: debug
 
-#eureka-client
-eureka:
-  client:
-     serviceUrl:
-       defaultZone: http://localhost:8701/eureka/
-  instance:
-    hostname: localhost
+
 

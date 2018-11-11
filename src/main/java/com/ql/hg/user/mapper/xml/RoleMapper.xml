@@ -12,9 +12,9 @@
         <result column="name" property="name" />
     </resultMap>
 
-    <!-- 通用查询结果列 -->
+<!--     通用查询结果列
     <sql id="Base_Column_List">
         id, created_account, created_date, description, location_code, name
-    </sql>
+    </sql> -->
 
 </mapper>

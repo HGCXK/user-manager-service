@@ -1,9 +1,10 @@
 package com.ql.hg.user.service;
 
+import com.ql.hg.user.entity.RoleMenu;
+
 import java.util.List;
 
 import com.baomidou.mybatisplus.extension.service.IService;
-import com.ql.hg.user.entity.Role;
 
 /**
  * <p>
@@ -11,14 +12,15 @@ import com.ql.hg.user.entity.Role;
  * </p>
  *
  * @author HG
- * @since 2018-11-08
+ * @since 2018-11-11
  */
-public interface RoleService extends IService<Role> {
+public interface RoleMenuService extends IService<RoleMenu> {
 	
 	/**
-	 * 加载角色
+	 * 通过roleId加载菜单
 	 * @param roleId
 	 * @return
 	 */
-	public Role loadRoleById(String roleId);
+	public  List<RoleMenu> loadMenuByRoleId(String roleId);
+
 }

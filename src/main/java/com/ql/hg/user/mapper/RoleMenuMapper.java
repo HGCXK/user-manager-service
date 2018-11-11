@@ -1,6 +1,6 @@
 package com.ql.hg.user.mapper;
 
-import com.ql.hg.user.entity.Role;
+import com.ql.hg.user.entity.RoleMenu;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 
 /**
@@ -9,10 +9,8 @@ import com.baomidou.mybatisplus.core.mapper.BaseMapper;
  * </p>
  *
  * @author HG
- * @since 2018-11-08
+ * @since 2018-11-11
  */
-public interface RoleMapper extends BaseMapper<Role> {
-	
-	
+public interface RoleMenuMapper extends BaseMapper<RoleMenu> {
 
 }
