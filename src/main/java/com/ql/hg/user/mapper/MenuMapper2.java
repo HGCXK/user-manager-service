@@ -1,6 +1,9 @@
 package com.ql.hg.user.mapper;
 
 import com.ql.hg.user.entity.Menu;
+
+import org.apache.ibatis.annotations.Select;
+
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 
 /**
@@ -9,8 +12,10 @@ import com.baomidou.mybatisplus.core.mapper.BaseMapper;
  * </p>
  *
  * @author HG
- * @since 2018-11-12
+ * @since 2018-09-20
  */
-public interface MenuMapper extends BaseMapper<Menu> {
+public interface MenuMapper2 extends BaseMapper<Menu> {
+	
+	
 
 }

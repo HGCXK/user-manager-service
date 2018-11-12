@@ -4,13 +4,8 @@ import com.baomidou.mybatisplus.annotation.TableName;
 import com.baomidou.mybatisplus.extension.activerecord.Model;
 
 import lombok.Data;
-import lombok.experimental.Accessors;
 
 import java.io.Serializable;
-import java.net.URL;
-import java.util.List;
-
-import org.springframework.boot.autoconfigure.jmx.ParentAwareNamingStrategy;
 
 /**
  * <p>
@@ -18,12 +13,13 @@ import org.springframework.boot.autoconfigure.jmx.ParentAwareNamingStrategy;
  * </p>
  *
  * @author HG
- * @since 2018-09-20
+ * @since 2018-11-12
  */
 @TableName("tbl_sys_menu")
-@Accessors(chain=true)
 @Data
 public class Menu extends Model<Menu> {
+
+    private static final long serialVersionUID = 1L;
 
     /**
      * 主键
@@ -64,15 +60,48 @@ public class Menu extends Model<Menu> {
      * 访问地址
      */
     private String url;
-    
 
-    
-
-	@Override
-	protected Serializable pkVal() {
-		return this.id;
-	}
+    /**
+     * 是否有孩子节点 1是 0否
+     */
+    private Integer hasChild;
 
 
-  
+    public static final String ID = "id";
+
+    public static final String FLAG = "flag";
+
+    public static final String ICON = "icon";
+
+    public static final String LEVEL = "level";
+
+    public static final String NAME = "name";
+
+    public static final String PARENT_ID = "parent_id";
+
+    public static final String SORT = "sort";
+
+    public static final String URL = "url";
+
+    public static final String HAS_CHILD = "has_child";
+
+    @Override
+    protected Serializable pkVal() {
+        return this.id;
+    }
+
+    @Override
+    public String toString() {
+        return "Menu{" +
+        "id=" + id +
+        ", flag=" + flag +
+        ", icon=" + icon +
+        ", level=" + level +
+        ", name=" + name +
+        ", parentId=" + parentId +
+        ", sort=" + sort +
+        ", url=" + url +
+        ", hasChild=" + hasChild +
+        "}";
+    }
 }

@@ -12,7 +12,10 @@ import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.session.data.redis.config.annotation.web.http.EnableRedisHttpSession;
 import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
+import org.springframework.ui.ModelMap;
 
+import com.ql.hg.user.controller.MenuController;
+import com.ql.hg.user.entity.Menu;
 import com.ql.hg.user.service.RoleMenuService;
 
 
@@ -30,17 +33,15 @@ public class InitApplication implements ApplicationRunner{
     private ListOperations<String, String> listOps;
 	
 	@Autowired
-	private RoleMenuService service;
+	private MenuController menuController;
+	
 	
 
 
 	@Override
 	public void run(ApplicationArguments arg0) throws Exception {
 		System.out.println("------"+"初始化redis菜单"+"-------------");
-		//加载一级菜单
-		//加载二级菜单
-		//加载三级菜单
-		
+		menuController.updateRedis(new ModelMap(), new Menu());
 		System.out.println("------"+"初始化redis菜单完成"+"-------------");
 	}
 	
